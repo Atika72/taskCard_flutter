@@ -1,6 +1,7 @@
 // import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_01/Screen/Tip_Calculator.dart';
 import 'package:flutter_01/new_page.dart';
 
 void main() {
@@ -47,7 +48,7 @@ class _HomeState extends State<Home> {
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const NewPage()));
+                    MaterialPageRoute(builder: (context) => const TipCalculator()));
               },
               // style: ButtonStyle(),
               child: const Text("Let's get started"),

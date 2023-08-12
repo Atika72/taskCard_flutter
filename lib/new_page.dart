@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_01/taskListPage.dart';
+
+import 'Add Task.dart';
 
 class NewPage extends StatefulWidget {
   const NewPage({super.key});
@@ -8,6 +11,8 @@ class NewPage extends StatefulWidget {
 }
 
 class _NewPageState extends State<NewPage> {
+  List<AddTask> taskList=[];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,51 +24,30 @@ class _NewPageState extends State<NewPage> {
         backgroundColor: Colors.white,
       ),
 
-      body:const Column(
+      body:Column(
         children: [
-          TaskCard(),
-          TaskCard(),
-          TaskCard(),
-          TaskCard()
+          TaskCard(
+            taskName: "Task One",
+            taskDetails: "First Task",
+            dateTime: DateTime.now(),
+          ),
         ],
+      ),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed:() {
+          taskList.add(
+              AddTask(
+                  taskName: "taskName",
+                  taskDetails: "taskDetails",
+                  dateTime: DateTime.now())
+          );
+        },
+        backgroundColor: Colors.black12,
+        child: const Icon(Icons.add, color: Colors.white,),
       ),
     );
   }
 }
 
-class TaskCard extends StatefulWidget {
-  const TaskCard({super.key});
-
-  @override
-  State<TaskCard> createState() => _TaskCardState();
-}
-
-class _TaskCardState extends State<TaskCard> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      padding: const EdgeInsets.all(15),
-
-      decoration: BoxDecoration(
-          color: Colors.green.shade100,
-          borderRadius: BorderRadius.circular(10)
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text("Task Name", style: TextStyle(fontWeight: FontWeight.w500),),
-          const Text("Your Personal task management and planning solution for planning your day, week & months"),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text(DateTime.now().toString().split(".")[0]),
-            ],
-          )
-        ],
-      ),
-
-    );
-  }
-}
 
